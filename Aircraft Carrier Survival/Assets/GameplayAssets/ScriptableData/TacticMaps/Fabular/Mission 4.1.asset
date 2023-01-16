@@ -1,0 +1,4388 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0939c0c937fa7a54c9add359ac0c9c01, type: 3}
+  m_Name: Mission 4.1
+  m_EditorClassIdentifier: 
+  MissionTitleID: SavoName
+  MapShadow: {fileID: 21300000, guid: 5a675d23d77492141ad7e257c1cb7bad, type: 3}
+  Map: {fileID: 21300000, guid: c84b7156bf88b7b45b237cb2e7400274, type: 3}
+  LandMask: {fileID: 2800000, guid: 8c8ede01f8478ec49a534aad629dbef2, type: 3}
+  MapShadowRenderTexture: {fileID: 0}
+  MapRenderTexture: {fileID: 0}
+  Fleets: []
+  ShipPositions: []
+  Sandbox: 0
+  PlayerPosition: {x: 688, y: -342}
+  Nodes:
+  - {x: 194, y: -162}
+  - {x: 240, y: -346}
+  - {x: 499, y: -440}
+  - {x: 205, y: -101}
+  - {x: 304, y: 108}
+  - {x: 498, y: 149}
+  - {x: 714, y: 201}
+  - {x: 645, y: -124}
+  - {x: 323, y: -179}
+  - {x: 637, y: -28}
+  - {x: 766, y: 66}
+  - {x: 922, y: 213}
+  - {x: 486, y: -255}
+  - {x: 533, y: -59}
+  - {x: 806, y: 237}
+  - {x: 782, y: -280}
+  - {x: -472, y: 423}
+  - {x: 111.2, y: 24.8}
+  - {x: -438, y: -185}
+  - {x: 248, y: -470}
+  - {x: 686, y: -460}
+  - {x: 572, y: 197}
+  - {x: 410, y: 356}
+  - {x: 843, y: -81}
+  - {x: 846, y: 512}
+  - {x: 428.8, y: 163.1}
+  - {x: 4, y: 223}
+  EnemyUnits:
+  - Name: Enemy1
+    Position: {x: 718, y: 205}
+    NameID: M4.1F1
+    Patrols:
+    - Nodes:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      Poses: 000000000100000002000000
+    MaxOffset: 40
+    AttackRange: 550
+    BuildingBlocks:
+    - {fileID: 11400000, guid: d8f7d9fecf6e1c04a8e682ff459195c2, type: 2}
+    - {fileID: 11400000, guid: f9c94bbe550e985418ebd75082021be2, type: 2}
+    - {fileID: 11400000, guid: 996de722a7909f14b813cde9fbec4938, type: 2}
+    - {fileID: 11400000, guid: 57e933a93c26307439eaee3c81163ebb, type: 2}
+    - {fileID: 11400000, guid: 98ede77798c6bff4eb9e3a473cde849a, type: 2}
+    - {fileID: 11400000, guid: d8f7d9fecf6e1c04a8e682ff459195c2, type: 2}
+    InstantDeadBlocks: 
+    RevealRange: 0
+    Speed: 0.18
+    IsAlly: 0
+    CanChase: 0
+    CanRetreat: 0
+    IsHidden: 1
+    IsDisabled: 0
+    IsDetectableMissionOnly: 0
+    DetectRange: 200
+    OverrideChanceToReveal: 0.2
+    SaveIndex: 0
+    AlternativePathfinding: 0
+    CanReceiveCAP: 0
+  - Name: Enemy2
+    Position: {x: 197, y: -147}
+    NameID: M4.1F2
+    Patrols:
+    - Nodes:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      Poses: 03000000040000000500000006000000
+    MaxOffset: 40
+    AttackRange: 550
+    BuildingBlocks:
+    - {fileID: 11400000, guid: 57ad76633dd794745a347677875be102, type: 2}
+    - {fileID: 11400000, guid: d4667c108cae21a47897130dae173415, type: 2}
+    - {fileID: 11400000, guid: 345b7d0654bef57438c645c62d343067, type: 2}
+    - {fileID: 11400000, guid: d810bfd3276ba2f4283cc35032a070ca, type: 2}
+    - {fileID: 11400000, guid: aa7aad7250755dd43984dc3a5601784f, type: 2}
+    - {fileID: 11400000, guid: 996de722a7909f14b813cde9fbec4938, type: 2}
+    InstantDeadBlocks: 
+    RevealRange: 0
+    Speed: 0.18
+    IsAlly: 0
+    CanChase: 0
+    CanRetreat: 0
+    IsHidden: 1
+    IsDisabled: 0
+    IsDetectableMissionOnly: 0
+    DetectRange: 200
+    OverrideChanceToReveal: 0.2
+    SaveIndex: 0
+    AlternativePathfinding: 0
+    CanReceiveCAP: 0
+  - Name: EnemySecondWave
+    Position: {x: 772, y: 292}
+    NameID: M4.1F3
+    Patrols:
+    - Nodes:
+      - {fileID: 0}
+      Poses: 0e000000
+    MaxOffset: 0
+    AttackRange: 550
+    BuildingBlocks:
+    - {fileID: 11400000, guid: 57e933a93c26307439eaee3c81163ebb, type: 2}
+    - {fileID: 11400000, guid: f9c94bbe550e985418ebd75082021be2, type: 2}
+    - {fileID: 11400000, guid: 1085fd6ed4a66024581ff89d992e443a, type: 2}
+    - {fileID: 11400000, guid: d8f7d9fecf6e1c04a8e682ff459195c2, type: 2}
+    - {fileID: 11400000, guid: f9c94bbe550e985418ebd75082021be2, type: 2}
+    - {fileID: 11400000, guid: 0df1929284639cb44ba5b653c9521614, type: 2}
+    InstantDeadBlocks: 
+    RevealRange: 0
+    Speed: 0.22
+    IsAlly: 0
+    CanChase: 1
+    CanRetreat: 0
+    IsHidden: 0
+    IsDisabled: 1
+    IsDetectableMissionOnly: 0
+    DetectRange: 200
+    OverrideChanceToReveal: -1
+    SaveIndex: 0
+    AlternativePathfinding: 0
+    CanReceiveCAP: 0
+  - Name: Survivor#1
+    Position: {x: 487, y: -256}
+    NameID: 
+    Patrols: []
+    MaxOffset: 0
+    AttackRange: 0
+    BuildingBlocks:
+    - {fileID: 11400000, guid: 10885b5fe0478794bbec45014a15931d, type: 2}
+    InstantDeadBlocks: 
+    RevealRange: 20
+    Speed: 0
+    IsAlly: 1
+    CanChase: 0
+    CanRetreat: 0
+    IsHidden: 0
+    IsDisabled: 1
+    IsDetectableMissionOnly: 0
+    DetectRange: 0
+    OverrideChanceToReveal: -1
+    SaveIndex: 0
+    AlternativePathfinding: 0
+    CanReceiveCAP: 0
+  - Name: Survivor#2
+    Position: {x: 532, y: -58}
+    NameID: 
+    Patrols: []
+    MaxOffset: 0
+    AttackRange: 0
+    BuildingBlocks:
+    - {fileID: 11400000, guid: 10885b5fe0478794bbec45014a15931d, type: 2}
+    InstantDeadBlocks: 
+    RevealRange: 20
+    Speed: 0
+    IsAlly: 1
+    CanChase: 0
+    CanRetreat: 0
+    IsHidden: 0
+    IsDisabled: 1
+    IsDetectableMissionOnly: 0
+    DetectRange: 0
+    OverrideChanceToReveal: -1
+    SaveIndex: 0
+    AlternativePathfinding: 0
+    CanReceiveCAP: 0
+  - Name: AllyFleet
+    Position: {x: 646, y: -126}
+    NameID: M4.1F4
+    Patrols:
+    - Nodes:
+      - {fileID: 0}
+      Poses: 07000000
+    MaxOffset: 0
+    AttackRange: 0
+    BuildingBlocks:
+    - {fileID: 11400000, guid: 98ede77798c6bff4eb9e3a473cde849a, type: 2}
+    - {fileID: 11400000, guid: 4c3f95b17ca887643a49a9eb02e8d51d, type: 2}
+    - {fileID: 11400000, guid: 6827e5005f23f0343a897df2e3944aa1, type: 2}
+    - {fileID: 11400000, guid: 4c3f95b17ca887643a49a9eb02e8d51d, type: 2}
+    - {fileID: 11400000, guid: 6827e5005f23f0343a897df2e3944aa1, type: 2}
+    InstantDeadBlocks: 000000000200000004000000
+    RevealRange: 100
+    Speed: 0
+    IsAlly: 1
+    CanChase: 0
+    CanRetreat: 0
+    IsHidden: 0
+    IsDisabled: 0
+    IsDetectableMissionOnly: 0
+    DetectRange: 0
+    OverrideChanceToReveal: -1
+    SaveIndex: 0
+    AlternativePathfinding: 0
+    CanReceiveCAP: 0
+  Objectives:
+  - Title: 
+    Description: 
+    Name: Instant/SpawnFirstTimer/Briefing
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 10
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 0
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 10
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 2160
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendFleetTimerName_4.1
+      TimerTooltipTitleID: DefendFleetTimerTitle_4.1
+      TimerTooltipDescID: DefendFleetTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 2
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 2160
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendFleetTimerName_4.1
+      TimerTooltipTitleID: DefendFleetTimerTitle_4.1
+      TimerTooltipDescID: DefendAllyFleetTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 87
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 05000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 2160
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendFleetTimerName_4.1
+      TimerTooltipTitleID: DefendFleetTimerTitle_4.1
+      TimerTooltipDescID: DefendAllyFleetTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 17
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 2160
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendFleetTimerName_4.1
+      TimerTooltipTitleID: DefendFleetTimerTitle_4.1
+      TimerTooltipDescID: DefendAllyFleetTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 87
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 05000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 2160
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendFleetTimerName_4.1
+      TimerTooltipTitleID: DefendFleetTimerTitle_4.1
+      TimerTooltipDescID: DefendAllyFleetTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 75
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 2160
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendFleetTimerName_4.1
+      TimerTooltipTitleID: DefendFleetTimerTitle_4.1
+      TimerTooltipDescID: DefendAllyFleetTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: SpawnSurvivor#1/ShowSurvivor
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 720
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 16
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 03000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 81
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 05000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 0
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 05000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: SpawnSurvivor#2
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1440
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 16
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 04000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 81
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 06000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 0
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 06000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 0
+  - Title: M4.1O1
+    Description: M4.1O1D
+    Name: ObjectiveDefendFleet/STARTObjectiveDefendCarrier&effects
+    ObjectiveTargets:
+    - {fileID: 0}
+    ObjectiveTargetIDs: 05000000
+    ObjectiveTargetVectors:
+    - {x: 0, y: 0}
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 1
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 2160
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 0
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 0c000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      - {fileID: 0}
+      Targets: 0a0000000c000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 87
+      NotEffect: 1
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 91
+      NotEffect: 1
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 1
+  - Title: 
+    Description: 
+    Name: ObjectiveDefendFleetFAILED
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 1
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses:
+    - {fileID: 0}
+    Targets: 05000000
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 25
+    Effects:
+    - EffectType: 5
+      NotEffect: 1
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 0
+  - Title: M4.1O2
+    Description: M4.1O2D
+    Name: ObjectiveRescueSurvior#1
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 2
+    Type: 57
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects: []
+    Active: 0
+    Visible: 0
+  - Title: M4.1O3
+    Description: M4.1O3D
+    Name: ObjectiveRescueSurvior#2
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 2
+    Type: 57
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 1
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects: []
+    Active: 0
+    Visible: 0
+  - Title: M4.1O4
+    Description: M4.1O4D
+    Name: ObjectiveDestroyEnemies(2/2)or(0/2)
+    ObjectiveTargets:
+    - {fileID: 0}
+    - {fileID: 0}
+    ObjectiveTargetIDs: 0000000001000000
+    ObjectiveTargetVectors:
+    - {x: 0, y: 0}
+    - {x: 0, y: 0}
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 2
+    Type: 1
+    NotType: 0
+    TargetType: 1
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses:
+    - {fileID: 0}
+    - {fileID: 0}
+    Targets: 0000000001000000
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 60
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 07000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: M4.1O4.2
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 1
+  - Title: 
+    Description: 
+    Name: ObjectiveDestroyEnemies(1/2)
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 1
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses:
+    - {fileID: 0}
+    - {fileID: 0}
+    Targets: 0000000001000000
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 60
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 07000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: M4.1O4.1
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 1
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: ShowMovie/ShowTimer/SpawnEnemy/TeleportEnemy&Player/Activate&StartObjectiveCarrier/ForceCarrierSpeed/ChangeTime/ShowTowShip
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 10
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 900
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 2
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 1
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 10
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 1440
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendCarrierTimerName_4.1
+      TimerTooltipTitleID: DefendCarrierTimerTitle_4.1
+      TimerTooltipDescID: DefendCarrierTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 77
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 00000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 572, y: 197}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 77
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 01000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 843, y: -87}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 78
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 7
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 02000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 21
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 3
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 20
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      Targets: 090000000a0000000b000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 79
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 8
+        Minute: 0
+    - EffectType: 0
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 0d000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 0d000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 22
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 82
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 82
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 1
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      Targets: 0f000000100000001100000012000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 1
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      - {fileID: 0}
+      Targets: 0f000000100000001100000012000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 1
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 91
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 1
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 95
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 1
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 637, y: -28}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: DisableObjectiveDefendFleetFAILED/ShowTimerDefendCarrier/SpawnInstantAttack
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 10
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 0
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 1
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 04000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 10
+      NotEffect: 1
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 15
+      NotEffect: 1
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 4
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 900
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 1
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 0b000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 900
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 1
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: DestroyEngines/Show&ActivateObjectiveDefendCarrier/ShowTimer/special attacks
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 24
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 19
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      - {fileID: 0}
+      Targets: 0c0000000e000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 0
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 0c000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 10
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 900
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendDamagedShipTimerName_4.1
+      TimerTooltipTitleID: DefendDamagedShipTimerTitle_4.1
+      TimerTooltipDescID: DefendDamagedShipTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 57
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 900
+      Hours: 2
+      Power: 5
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendDamagedShipTimerTitle_4.1
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: DefendDamagedShipTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    - EffectType: 57
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 900
+      Hours: 4
+      Power: 7
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: DefendDamagedShipTimerTitle_4.1
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: DefendDamagedShipTimerDesc_4.1
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: M4.1O5
+    Description: M4.1O5D
+    Name: ObjectvieDefendCarrier
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 900
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 1
+      NotEffect: 0
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 09000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: M4.1O6
+    Description: M4.1O6D
+    Name: ObjectiveDefendCarrier&tugboat
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1440
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 5
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: Second Briefing
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 10
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 0
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 2
+      NotEffect: 0
+      TargetTranses: []
+      Targets: 
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 2
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: DisableFail1
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 0
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses:
+    - {fileID: 0}
+    Targets: 05000000
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 1
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 11000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: DisableFail
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 0
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses:
+    - {fileID: 0}
+    Targets: 06000000
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 1
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 12000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: Fail1
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 8
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 05000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  - Title: 
+    Description: 
+    Name: Fail
+    ObjectiveTargets: []
+    ObjectiveTargetIDs: 
+    ObjectiveTargetVectors: []
+    UOObjectives: 0
+    InverseFinishStateInSummary: 0
+    ObjectiveCategory: 0
+    Type: 9
+    NotType: 0
+    TargetType: 0
+    FailOnNegativeTarget: 0
+    Count: 1
+    MissionType: 0
+    Simultaneously: 0
+    TargetBlock: {fileID: 0}
+    TargetTranses: []
+    Targets: 
+    SecondaryTargetEnemy: {fileID: 0}
+    SecondaryTarget: -1
+    StrikeGroupActiveSkill: 0
+    CameraView: 0
+    RoomType: 0
+    WindowType: 0
+    IndexValue: 0
+    SquadronType: 0
+    ManeuverType: 0
+    Range: 0
+    InverseComplete: 0
+    MapCornerData:
+      CornerOrientation: 0
+      CornerPositional: {x: 0, y: 0}
+    LoseType: 0
+    Effects:
+    - EffectType: 8
+      NotEffect: 1
+      TargetTranses:
+      - {fileID: 0}
+      Targets: 06000000
+      ObjectiveTransform: {fileID: 0}
+      ObjectiveTarget: 0
+      Movie: 0
+      Minutes: 0
+      Hours: 0
+      Power: 0
+      AbsoluteForce: 0
+      Range: 0
+      Count: 0
+      MissionType: 0
+      HoursToRetrieve: 0
+      RetrievePositionRect: {fileID: 0}
+      RetrievePosition: 0
+      BombersNeeded: 0
+      FightersNeeded: 0
+      TorpedoesNeeded: 0
+      OverrideWinDescriptionID: 
+      TimerID: 
+      TimerTooltipTitleID: 
+      TimerTooltipDescID: 
+      ParamA: 0
+      ParamB: 0
+      UICategories: 0
+      CameraInput: 0
+      IslandRooms: 0
+      Departments: 0
+      PlaneType: 0
+      Strategy: []
+      UOType: 0
+      Section: 0
+      FirstSubsection: 0
+      SecondSubsection: 0
+      Issue: 0
+      Department: 0
+      Missions: 0
+      Events: 0
+      DcCategoryFlag: 0
+      AttackStrikeGroup: 0
+      OverridePosition: {x: 0, y: 0}
+      SoundEventReference: 
+      CameraView: 0
+      Category: 0
+      Highlight: 
+      Time: 0
+      Date:
+        Year: 0
+        Month: 0
+        Day: 0
+        Hour: 0
+        Minute: 0
+    Active: 0
+    Visible: 0
+  AdditionalObjectsToSpawnMin: 0
+  AdditionalObjectsToSpawnMax: 0
+  MinMapPosition: {x: -721, y: -454}
+  MaxMapPosition: {x: 721, y: 454}
+  Movies:
+  - Clip: {fileID: 32900000, guid: 469c3393c29d24042a6128e1487723ee, type: 3}
+    AudioEvent: 
+    AudioSDEvent: event:/Briefs/Brief_Map_M_4_1_SD
+    Captions:
+    - TextID: Brief4.1_01_01
+      Timer: 0.01
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_01_01
+    - TextID: Brief4.1_01_02
+      Timer: 8.15
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_01_02
+    - TextID: Brief4.1_01_03
+      Timer: 15.52
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_01_03
+  - Clip: {fileID: 32900000, guid: a822977a825064740b372530696972ba, type: 3}
+    AudioEvent: 
+    AudioSDEvent: event:/Briefs/Brief_Map_M_4_1_2_SD
+    Captions:
+    - TextID: Brief4.1_02_01
+      Timer: 0.1
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02_01
+    - TextID: Brief4.1_02_02
+      Timer: 4.9
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02_02
+    - TextID: Brief4.1_02_03
+      Timer: 12.52
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02_03
+  - Clip: {fileID: 32900000, guid: 8a0b1ec06a8ea6547b2a72c8b152d0ff, type: 3}
+    AudioEvent: 
+    AudioSDEvent: event:/Briefs/Brief_Map_M_4_1_2_SD
+    Captions:
+    - TextID: Brief4.1_02B_01
+      Timer: 0.01
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02B_01
+    - TextID: Brief4.1_02B_02
+      Timer: 7.38
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02B_02
+    - TextID: Brief4.1_02B_03
+      Timer: 14.02
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02B_03
+    - TextID: Brief4.1_02B_04
+      Timer: 20.44
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02B_04
+    - TextID: Brief4.1_02B_05
+      Timer: 29.73
+      FmodEvent: event:/VO/BriefingNarrator/Brief4.1_02B_05
+  EnemyAttacks:
+    EnemiesAttackOnUs:
+    - EnemyAttacks:
+      - datas:
+        - Hour: 6
+          Minute: 25
+          AttackPower: 8
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 10
+          Minute: 46
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 13
+          Minute: 31
+          AttackPower: 9
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+      - datas:
+        - Hour: 7
+          Minute: 50
+          AttackPower: 8
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 12
+          Minute: 32
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 14
+          Minute: 35
+          AttackPower: 6
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+      - datas:
+        - Hour: 6
+          Minute: 6
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 8
+          Minute: 40
+          AttackPower: 8
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+        - Hour: 10
+          Minute: 13
+          AttackPower: 10
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 11
+          Minute: 30
+          AttackPower: 10
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+      - datas: []
+      - datas: []
+      - datas: []
+    - EnemyAttacks:
+      - datas:
+        - Hour: 8
+          Minute: 12
+          AttackPower: 8
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 12
+          Minute: 54
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 14
+          Minute: 14
+          AttackPower: 6
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+      - datas:
+        - Hour: 6
+          Minute: 50
+          AttackPower: 8
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+        - Hour: 10
+          Minute: 12
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 13
+          Minute: 53
+          AttackPower: 9
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+      - datas:
+        - Hour: 6
+          Minute: 0
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 8
+          Minute: 12
+          AttackPower: 10
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+        - Hour: 9
+          Minute: 30
+          AttackPower: 8
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 11
+          Minute: 13
+          AttackPower: 10
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+      - datas: []
+      - datas: []
+      - datas: []
+    - EnemyAttacks:
+      - datas:
+        - Hour: 10
+          Minute: 21
+          AttackPower: 6
+          Kamikaze: 0
+          Target: 0
+          AATime:
+          - 8.635312
+          - 16.271927
+          - 20.753773
+          - 29.157204
+          - 7.3348875
+          - 18.348661
+          - 7.35264
+          - 14.880693
+          - 0.99859726
+        - Hour: 13
+          Minute: 54
+          AttackPower: 5
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 15
+          Minute: 0
+          AttackPower: 7
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+      - datas:
+        - Hour: 9
+          Minute: 30
+          AttackPower: 5
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 14
+          Minute: 44
+          AttackPower: 8
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+        - Hour: 6
+          Minute: 57
+          AttackPower: 7
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+      - datas:
+        - Hour: 6
+          Minute: 30
+          AttackPower: 10
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 8
+          Minute: 43
+          AttackPower: 6
+          Kamikaze: 0
+          Target: 0
+          AATime: []
+        - Hour: 10
+          Minute: 0
+          AttackPower: 10
+          Kamikaze: 0
+          Target: 1
+          AATime: []
+        - Hour: 11
+          Minute: 40
+          AttackPower: 8
+          Kamikaze: 1
+          Target: 0
+          AATime: []
+      - datas: []
+      - datas: []
+      - datas: []
+    EnemiesAttacksOnFriends:
+    - EnemyAttacks:
+      - datas:
+        - Hour: 6
+          Minute: 20
+          AttackPower: 0
+          FriendID: 5
+        - Hour: 10
+          Minute: 0
+          AttackPower: 0
+          FriendID: 5
+      - datas:
+        - Hour: 14
+          Minute: 30
+          AttackPower: 0
+          FriendID: 5
+        - Hour: 8
+          Minute: 40
+          AttackPower: 0
+          FriendID: 5
+      - datas: []
+      - datas: []
+      - datas: []
+      - datas: []
+    - EnemyAttacks:
+      - datas:
+        - Hour: 6
+          Minute: 40
+          AttackPower: 0
+          FriendID: 5
+        - Hour: 9
+          Minute: 50
+          AttackPower: 0
+          FriendID: 5
+      - datas:
+        - Hour: 13
+          Minute: 45
+          AttackPower: 0
+          FriendID: 5
+        - Hour: 7
+          Minute: 50
+          AttackPower: 0
+          FriendID: 5
+      - datas: []
+      - datas: []
+      - datas: []
+      - datas: []
+    EnemiesSubmarinesAttacks:
+    - datas:
+      - Hour: 9
+        Minute: 0
+        AttackPower: 0
+    - datas:
+      - Hour: 13
+        Minute: 40
+        AttackPower: 0
+    EnemiesReconsAttacks:
+    - datas:
+      - Hour: 7
+        Minute: 20
+        AttackPower: 0
+      - Hour: 12
+        Minute: 30
+        AttackPower: 0
+      - Hour: 18
+        Minute: 0
+        AttackPower: 0
+    - datas:
+      - Hour: 6
+        Minute: 50
+        AttackPower: 0
+      - Hour: 13
+        Minute: 25
+        AttackPower: 0
+      - Hour: 16
+        Minute: 30
+        AttackPower: 0
+    - datas:
+      - Hour: 6
+        Minute: 40
+        AttackPower: 0
+      - Hour: 12
+        Minute: 20
+        AttackPower: 0
+      - Hour: 17
+        Minute: 0
+        AttackPower: 0
+  EnemyAttackPowerModifier: 5
+  PlaceholderBriefingID: 
+  CloudsPrefab: {fileID: 9102580756961458332, guid: 18d34a33a78fc0d4bbe434f281fcc590,
+    type: 3}
+  AdditionalCloudsPrefab: {fileID: 0}
+  CloudDirection: {x: -1, y: 0}
+  CloudSpeed: 1
+  Date:
+    Year: 1942
+    Month: 8
+    Day: 9
+    Hour: 6
+    Minute: 1
+  Overrides:
+    EnableView: 0
+    OverridenView: 0
+    EnableCrewData: 0
+    OverridenCrewData: []
+    EnableOfficersData: 0
+    OverridenOfficersData: 
+    EnableAvailableManeuvers: 0
+    OverridenAvailableManeuvers: []
+    EnableDefaultSwitchesValues: 0
+    OverridenDefaultSwitchesValues: 
+    EnableBuffs: 0
+    OverridenBuffs: []
+    EnableEscort: 0
+    OverridenEscort: 
+    EnableDCNoCategory: 0
+    EnableNoAACasualties: 0
+    EnableNextMission: 0
+    NextMission: {fileID: 0}
+    EnableNoSegmentDangers: 0
+  TutorialID: 0
+  BriefsFile: Brief4.1
+  Difficulty: 0
+  EnemiesCount: 0
+  AllyAttacks: 0
