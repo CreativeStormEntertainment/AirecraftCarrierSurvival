@@ -1,0 +1,17 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ExternalLibsInfo
+{
+    public static readonly string ExcelReader = "ExcelDataReader, Copyright (c) 2014";
+    public static readonly string NuGetForUnity = "NuGetForUnity, Copyright (c) 2018 Patrick McCarthy";
+ 
+    public static List<string> GetAllLibsInfos()
+    {
+        List<string> infos = new List<string>();
+        infos.Add(ExcelReader);
+        infos.Add(NuGetForUnity);
+        return infos;
+    }
+}

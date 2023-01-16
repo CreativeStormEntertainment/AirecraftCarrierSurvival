@@ -1,0 +1,84 @@
+﻿#if EXCEL_READER
+
+using ExcelDataReader;
+
+#endif
+
+using GambitDebug;
+using GambitLocalization;
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+
+public class ExcelToBin : Editor
+{
+#if EXCEL_READER
+    private static readonly string InputPath = @"\Datas\LocalizationInput\";
+    private static readonly string InputFileName = "Localization.xlsx";
+    private static readonly string OutputPath = @"\Resources\Localizations\LocalizedTexts\";
+
+    [MenuItem("Tools/Localization/Bin Localization")]
+    private static void BinLocalization()
+    {
+        using (var stream = File.Open(Application.dataPath + InputPath + InputFileName, FileMode.Open, FileAccess.Read))
+        {
+            using (var reader = ExcelReaderFactory.CreateReader(stream))
+            {
+                if (!reader.Read())
+                {
+                    Debug.LogError("Excel file is empty you little bastard!");
+                }
+
+                int columsCount = reader.FieldCount;
+
+                List<BinaryWriter> files = new List<BinaryWriter>(columsCount);
+                files.Add(new BinaryWriter(File.Open(Application.dataPath + OutputPath + "keys.bytes", FileMode.Create, FileAccess.Write)));
+                for (int i = 1; i < columsCount; i++)
+                {
+                    files.Add(new BinaryWriter(File.Open(Application.dataPath + OutputPath + reader.GetString(i) + ".bytes", FileMode.Create, FileAccess.Write)));
+                }
+
+                do
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.Depth == 0)
+                        {
+                            continue;
+                        }
+
+                        if (files.Count < reader.FieldCount)
+                        {
+                            Debug.LogError("In one of sheets there is more columns then in first one: " + reader.Name);
+                            break;
+                        }
+
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            string s = reader.GetString(i);
+                            if (s == null)
+                            {
+                                if (i == 0)
+                                {
+                                    //Debug.LogError("Found empty key in " + reader.Name);
+                                    break;
+                                }
+                                Debug.LogError(reader.GetString(0) + " has no translation");
+                                s = "";
+                            }
+                            files[i].Write(s);
+                        }
+                    }
+                }
+                while (reader.NextResult());
+                foreach (var item in files)
+                {
+                    item.Flush();
+                    item.Close();
+                }
+            }
+        }
+    }
+#endif
+}

@@ -1,0 +1,376 @@
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Net;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.Assertions;
+using RakNetEnums;
+using static RakNetDLL;
+
+public class NetworkManager
+{
+    public event Action<RakNetGUID> ConnectionEstablished = delegate { };
+    public event Action<IntPtr> UserAccepted = delegate { };
+    public event Action<List<uint>, List<bool>, List<string>, List<uint>> RoomsListReceived = delegate { };
+    public event Action<List<string>,List<bool>> RoomMembersReceived = delegate { };
+    public event Action StartHost = delegate { };
+    public event Action IncorrectPassword = delegate { };
+    public event Action<string> PlayerLeftRoom = delegate { };
+    public event Action<Int64> PlayerChangedStatus = delegate { };
+    public event Action RoomFull = delegate { };
+    public event Action<byte> OnRoomJoined = delegate { };
+    private static NetworkManager instance;
+    public static NetworkManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new NetworkManager();
+            }
+            return instance;
+        }
+    }
+
+    public UInt32 ConnectedRoomID { get; private set; } = UInt32.MaxValue;
+    public int AwaitedPlayers { get; private set; } = int.MaxValue;
+    private MonoBehaviour coroutineSource;
+
+    private bool startHost = false;
+
+    private IntPtr rakNetInstance = IntPtr.Zero;
+    //private RakNetGUID connectedGuid = new RakNetGUID();
+
+    private Coroutine receiveData = null;
+
+    //private string NATPunchAdress = "";
+
+    private IGameNetworkManager gameNetworkManager = null;
+
+    private string userName = null;
+
+    public NetworkManager()
+    {
+        coroutineSource = GameObject.Instantiate(new GameObject()).AddComponent<NetworkManagerHelper>();
+        GameObject.DontDestroyOnLoad(coroutineSource);
+
+        rakNetInstance = GetCurrentInstance();
+        //SetDataReceiver(DataReceived);
+        SetLogCallback((StringBuilder value, char piority) => { /*value.Length = (int)length;*/ Debug.Log(value.ToString()); });
+    }
+
+    ~NetworkManager()
+    {
+        DestroyInstance(rakNetInstance);
+    }
+
+    public void SetGameNetworkManager(IGameNetworkManager manager)
+    {
+        gameNetworkManager = manager;
+    }
+
+    public void StartLocalHost(byte maxConnections)
+    {
+#if NETWORK_PROJECT
+        Debug.Log(StartLocalServer(rakNetInstance, Consts.ServerPort, maxConnections));
+        receiveData = coroutineSource.StartCoroutine(ReceiveData());
+#endif
+    }
+
+    public void StartLocalClient(int port)
+    {
+        Debug.Log(RakNetDLL.StartLocalClient(rakNetInstance, port));
+        receiveData = coroutineSource.StartCoroutine(ReceiveData());
+    }
+
+    public void StartClient(int port)
+    {
+        Debug.Log(RakNetDLL.StartClient(rakNetInstance, port));
+        receiveData = coroutineSource.StartCoroutine(ReceiveData());
+    }
+
+    public void RefreshLocalConnection()
+    {
+#if NETWORK_PROJECT
+        PingAdress(rakNetInstance, "255.255.255.255", Consts.ServerPort);
+#endif
+    }
+
+    public void ConnectToGameServer(string address)
+    {
+#if NETWORK_PROJECT
+        Connect(rakNetInstance, address, Consts.ServerPort);
+#endif
+    }
+
+    public void ConnectToServer(string address, int port)
+    {
+        Debug.Log(Connect(rakNetInstance, address, port));
+    }
+
+    public void SendData(RakNetGUID guid, byte[] array)
+    {
+        //TODO find better way
+        Assert.IsTrue(array.Length > 0, "Cannot send empty data");
+        byte[] newArray = new byte[array.Length + 1];
+        Array.Copy(array, 0, newArray, 1, array.Length);
+        newArray[0] = (byte)RakNetEnums.MasterConnectionMessage.GAME_CUSTOM_MSG;
+#if NETWORK_PROJECT
+        RakNetDLL.SendData(rakNetInstance, guid, newArray);
+#endif
+    }
+
+    public void SendDataToServer(RakNetGUID guid, byte[] array)
+    {
+        Assert.IsTrue(array.Length > 0, "Cannot send empty data");
+#if NETWORK_PROJECT
+        RakNetDLL.SendData(rakNetInstance, guid, array);
+#endif
+    }
+
+    private IEnumerator ReceiveData()
+    {
+        while(true)
+        {
+            IntPtr ptr = GetPacket(rakNetInstance);
+            if(ptr != null && ptr != IntPtr.Zero)
+            {
+                //TODO Dealocate?
+                RakNetPacket packet = Marshal.PtrToStructure<RakNetPacket>(ptr);
+                byte id = Marshal.ReadByte(packet.data);
+                if (id < (byte)RakNetEnums.DefaultMessageIDTypes.ID_USER_PACKET_ENUM)
+                {
+                    Debug.Log((RakNetEnums.DefaultMessageIDTypes)id);
+                    switch ((RakNetEnums.DefaultMessageIDTypes)id)
+                    {
+                        case RakNetEnums.DefaultMessageIDTypes.ID_UNCONNECTED_PONG:
+                            {
+                                gameNetworkManager?.PongReceived(packet.adress);
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_NEW_INCOMING_CONNECTION:
+                            {
+                                gameNetworkManager?.ConnectionIncoming(packet.guid);
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_CONNECTION_REQUEST_ACCEPTED:
+                            {
+                                gameNetworkManager?.ConnectionEstablished(packet.guid);
+                                ConnectionEstablished(Marshal.PtrToStructure<RakNetGUID>(packet.guid));
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_USER_PACKET_ENUM:
+                            {
+                                gameNetworkManager?.ParseIncommingData(packet.data, packet.length);
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_NAT_PUNCHTHROUGH_SUCCEEDED:
+                            {
+                                if (startHost)
+                                {
+                                    ConnectToServer(packet.adress, (int)packet.port);
+                                }
+
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    Debug.Log((RakNetEnums.MasterConnectionMessage)id);
+                    switch ((RakNetEnums.MasterConnectionMessage)id)
+                    {
+                        case RakNetEnums.MasterConnectionMessage.LOG_ME_IN:
+                            ShowPacket(packet.data, packet.length);
+
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.USER_REGISTERED:
+                            {
+                                ShowPacket(packet.data, packet.length);
+                                int nDataStart = 3;
+                                var nLength = Marshal.ReadByte(packet.data, nDataStart++);
+                                var nam = "";
+                                for (int j = nDataStart, n = 0; n < nLength; j++, n++)
+                                {
+                                    nam += (char)Marshal.ReadByte(packet.data, j);
+                                    nDataStart = j;
+                                }
+                                Debug.Log(nam + "." + (int)nLength);
+                                gameNetworkManager?.SetUserName(nam);
+                                userName = nam;
+                                //ShowPacket(packet.data, packet.length);
+                                UserAccepted(packet.data);
+                            }
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.JOIN_ANY:
+                            Debug.Log(Marshal.ReadByte(packet.data, 1));
+                            Debug.Log(Marshal.ReadByte(packet.data, 2));
+                            Debug.Log(Marshal.ReadByte(packet.data, 3));
+                            Debug.Log(Marshal.ReadByte(packet.data, 4));
+                            Debug.Log(Marshal.ReadByte(packet.data, 5));
+
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.GET_ROOMS_LIST:
+                            ShowPacket(packet.data, packet.length);
+                            uint counter = (uint)IPAddress.NetworkToHostOrder(Marshal.ReadInt16(packet.data, 1));
+                            List<uint> list = new List<uint>();
+                            List<bool> pList = new List<bool>();
+                            List<string> nList = new List<string>();
+                            List<uint> slotsList = new List<uint>();
+                            var nextDataStart = 0;
+                            for (int i = 0; i < counter; i++)
+                            {
+                                list.Add(Marshal.ReadByte(packet.data, nextDataStart + (i == 0 ? 6 : 4)));
+                                pList.Add(Marshal.ReadByte(packet.data, nextDataStart + (i == 0 ? 10 : 8)) == 0);
+                                var nameLength = Marshal.ReadByte(packet.data, nextDataStart + (i == 0 ? 20 : 18));
+                                var name = "";
+                                for (int j = nextDataStart + (i == 0 ? 21 : 19), n = 0; n < nameLength; j++, n++)
+                                {
+                                    name += (char)Marshal.ReadByte(packet.data, j);
+                                    nextDataStart = j;
+                                }
+                                nList.Add(name);
+                                nextDataStart += 4;
+                                slotsList.Add(Marshal.ReadByte(packet.data, nextDataStart));
+                            }
+                            RoomsListReceived(list, pList, nList, slotsList);
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.YOU_HOST:
+                            ShowPacket(packet.data, packet.length);
+                            Int32 numberOfPlayers = IPAddress.NetworkToHostOrder(Marshal.ReadInt32(packet.data, 1));
+                            Debug.Log(numberOfPlayers);
+                            AwaitedPlayers = numberOfPlayers;
+                            StartHost();
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.YOU_DONT_HOST:
+
+                            UInt64 guid = (UInt64)(Marshal.ReadInt64(packet.data, 1));
+                            RakNetGUID natPunchGUID = new RakNetGUID();
+                            natPunchGUID.g = (guid);
+                            UInt64 guidRemote = (UInt64)(Marshal.ReadInt64(packet.data, 5));
+                            RakNetGUID remoteGUID = new RakNetGUID();
+                            remoteGUID.g = guidRemote;
+#if NETWORK_PROJECT
+                            Debug.Log(PunchNAT(rakNetInstance, natPunchGUID, Consts.NatServerAdress));
+#endif
+                            //Debug.Log(RequestForwarding(rakNetInstance, remoteGUID, "95.50.217.69:8100"));
+                            startHost = true;
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.GAME_CUSTOM_MSG:
+                            gameNetworkManager?.ParseIncommingData(packet.data, packet.length);
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.GIB_ME_ROOM:
+                            {
+                                ShowPacket(packet.data, packet.length);
+                                byte errorCode = Marshal.ReadByte(packet.data, 1);
+                                if (errorCode == 0)
+                                {
+                                    ConnectedRoomID = (uint)IPAddress.NetworkToHostOrder(Marshal.ReadInt32(packet.data, 2));
+                                    OnRoomJoined(Marshal.ReadByte(packet.data, 6));
+                                    RoomMembersReceived(new List<string>() { userName }, new List<bool>() { false });
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("Error in room creation");
+                                }
+                            }
+                            break;
+                        case MasterConnectionMessage.JOIN_ROOM:
+                            {
+                                ShowPacket(packet.data, packet.length);
+                                byte errorCode = Marshal.ReadByte(packet.data, 1);
+                                if (errorCode == 0)
+                                {
+                                    OnRoomJoined(Marshal.ReadByte(packet.data, 2));
+                                    byte size = Marshal.ReadByte(packet.data, 3);
+                                    List<string> names = new List<string>(size);
+                                    List<bool> readys = new List<bool>(size);
+                                    int offset = 4;
+                                    for (int i = 0; i < size; i++)
+                                    {
+                                        string s = "";
+                                        short length = IPAddress.NetworkToHostOrder(Marshal.ReadInt16(packet.data, offset));
+                                        offset += 2;
+                                        for (int j = 0; j < length; j++)
+                                        {
+                                            s += (char)Marshal.ReadByte(packet.data, offset++);
+                                        }
+                                        names.Add(s);
+                                        offset += 3;
+                                        var ready = Marshal.ReadByte(packet.data, offset++);
+                                        readys.Add(ready == 1);
+                                    }
+                                    RoomMembersReceived(names, readys);
+                                }
+                                else
+                                {
+                                    Debug.LogWarning("Error in room joining");
+                                }
+                            }
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.UPDATE_ROOM_USERS:
+                            {
+                                ShowPacket(packet.data, packet.length);
+                                int offset = 1;
+                                byte size = Marshal.ReadByte(packet.data, offset++);
+                                List<string> names = new List<string>(size);
+                                List<bool> readys = new List<bool>(size);
+                                for (int i = 0; i < size; i++)
+                                {
+                                    string s = "";
+                                    short length = IPAddress.NetworkToHostOrder(Marshal.ReadInt16(packet.data, offset));
+                                    offset += 2;
+                                    for (int j = 0; j < length; j++)
+                                    {
+                                        s += (char)Marshal.ReadByte(packet.data, offset++);
+                                    }
+                                    names.Add(s);
+                                    var ready = Marshal.ReadByte(packet.data, offset++);
+                                    readys.Add(ready == 1);
+                                }
+                                RoomMembersReceived(names, readys);
+                            }
+                            break;
+                        case MasterConnectionMessage.LEAVE_ROOM:
+                            {
+                                var nameLength = Marshal.ReadByte(packet.data, 10);
+                                var name = "";
+                                for (int i = 11; i < nameLength + 11; i++)
+                                {
+                                    name += (char)Marshal.ReadByte(packet.data, i);
+                                }
+                                PlayerLeftRoom(name);
+                                break;
+                            }
+                        case MasterConnectionMessage.SET_READY_STATUS:
+                            {
+                                ShowPacket(packet.data, packet.length);
+                                var ready = IPAddress.NetworkToHostOrder(Marshal.ReadInt64(packet.data, 1));                               
+                                PlayerChangedStatus(ready);
+                                break;
+                            }
+                        case MasterConnectionMessage.ROOM_FULL:
+                            {
+                                RoomFull();
+                                break;
+                            }
+                    }
+                }
+                DealocatePacket(rakNetInstance, packet.packetRef);
+
+            }
+            yield return null;
+        }
+    }
+
+    private void ShowPacket(IntPtr data, ulong size)
+    {
+        for (ulong i = 0; i < size; i++)
+        {
+            Debug.Log(Marshal.ReadByte(data, (int)i));
+        }
+    }
+}

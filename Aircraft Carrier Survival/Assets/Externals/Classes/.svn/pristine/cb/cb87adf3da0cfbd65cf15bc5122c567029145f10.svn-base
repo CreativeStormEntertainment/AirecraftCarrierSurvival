@@ -1,0 +1,235 @@
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Collections;
+using System.Net;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine;
+using UnityEngine.Assertions;
+using System.Net.NetworkInformation;
+
+using static RakNetDLL;
+
+public class NetworkManager
+{
+    public event Action<RakNetGUID> ConnectionEstablished = delegate{ };
+    public event Action<IntPtr> UserAccepted = delegate{ };
+    public event Action<List<uint>> RoomsListReceived = delegate { };
+    public static NetworkManager Instance = null;
+
+    private MonoBehaviour corutineSource;
+
+    private bool startHost = false;
+
+    private IntPtr rakNetInstance = IntPtr.Zero;
+    //private RakNetGUID connectedGuid = new RakNetGUID();
+
+    private Coroutine receiveData = null;
+
+    //private string NATPunchAdress = "";
+
+    private IGameNetworkManager gameNetworkManager = null;
+    public int ServerPort
+    {
+        get; set;
+    } = 8101;
+
+    public NetworkManager()
+    {
+        Assert.IsNull(Instance);
+        Instance = this;
+
+        corutineSource = GameObject.Instantiate(new GameObject()).AddComponent<NetworkManagerHelper>();
+        GameObject.DontDestroyOnLoad(corutineSource);
+
+        rakNetInstance = GetCurrentInstance();
+        //SetDataReceiver(DataReceived);
+        SetLogCallback((StringBuilder value, char piority) => { /*value.Length = (int)length;*/ Debug.Log(value.ToString()); });
+    }
+
+    ~NetworkManager()
+    {
+        DestroyInstance(rakNetInstance);
+    }   
+
+    public void SetGameNetworkManager(IGameNetworkManager manager)
+    {
+        gameNetworkManager = manager;
+    }
+
+    public void StartLocalHost(byte maxConnections)
+    {
+        Debug.Log(StartLocalServer(rakNetInstance, ServerPort, maxConnections));
+        receiveData = corutineSource.StartCoroutine(ReceiveData());
+    }
+
+    public void StartLocalClient(int port)
+    {
+        Debug.Log(RakNetDLL.StartLocalClient(rakNetInstance, port));
+        receiveData = corutineSource.StartCoroutine(ReceiveData());
+    }
+
+    public void StartClient(int port)
+    {
+        Debug.Log(RakNetDLL.StartClient(rakNetInstance, port));
+        receiveData = corutineSource.StartCoroutine(ReceiveData());
+    }
+
+    public void RefreshLocalConnection()
+    {
+        PingAdress(rakNetInstance, "255.255.255.255", ServerPort);
+    }
+
+    public void ConnectToGameServer(string address)
+    {
+        Connect(rakNetInstance, address, ServerPort);
+    }
+
+    public void ConnectToServer(string address, int port)
+    {
+        Debug.Log(Connect(rakNetInstance, address, port));
+    }
+
+    public void SendData(RakNetGUID guid, byte[] array)
+    {
+        //TODO find better way
+        Assert.IsTrue(array.Length > 0, "Cannot send empty data");
+        byte[] newArray = new byte[array.Length + 1];
+        Array.Copy(array, 0, newArray, 1, array.Length);
+        newArray[0] = (byte)RakNetEnums.MasterConnectionMessage.GAME_CUSTOM_MSG;
+#if NETWORK_PROJECT
+        RakNetDLL.SendData(rakNetInstance, guid, newArray);
+#endif
+    }
+
+    public void SendDataToServer(RakNetGUID guid, byte[] array)
+    {
+        Assert.IsTrue(array.Length > 0, "Cannot send empty data");
+#if NETWORK_PROJECT
+        RakNetDLL.SendData(rakNetInstance, guid, array);
+#endif
+    }
+
+    private IEnumerator ReceiveData()
+    {
+        while(true)
+        {
+            IntPtr ptr = GetPacket(rakNetInstance);
+            if(ptr != null && ptr != IntPtr.Zero)
+            {
+                //TODO Dealocate? 
+                RakNetPacket packet = Marshal.PtrToStructure<RakNetPacket>(ptr);
+                byte id = Marshal.ReadByte(packet.data);
+                if (id <= (byte)RakNetEnums.DefaultMessageIDTypes.ID_USER_PACKET_ENUM)
+                {
+                    Debug.Log((RakNetEnums.DefaultMessageIDTypes)id);
+                    switch ((RakNetEnums.DefaultMessageIDTypes)id)
+                    {
+                        case RakNetEnums.DefaultMessageIDTypes.ID_UNCONNECTED_PONG:
+                            {
+                                gameNetworkManager?.PongReceived(Marshal.PtrToStringAnsi(packet.port));
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_NEW_INCOMING_CONNECTION:
+                            {
+                                gameNetworkManager?.ConnectionIncoming(packet.guid);
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_CONNECTION_REQUEST_ACCEPTED:
+                            {
+                                gameNetworkManager?.ConnectionEstablished(packet.guid);
+                                ConnectionEstablished(Marshal.PtrToStructure <RakNetGUID> (packet.guid));
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_USER_PACKET_ENUM:
+                            {
+                                gameNetworkManager?.ParseIncommingData(packet.data);
+                            }
+                            break;
+                        case RakNetEnums.DefaultMessageIDTypes.ID_NAT_PUNCHTHROUGH_SUCCEEDED:
+                            {
+                                if(startHost)
+                                {
+                                    ConnectToServer(packet.adress, (int)packet.port);
+                                }
+
+                            }
+                            break;
+                    }                    
+                }
+                else
+                {
+                    Debug.Log((RakNetEnums.MasterConnectionMessage)id);
+                    switch ((RakNetEnums.MasterConnectionMessage)id)
+                    {
+                        case RakNetEnums.MasterConnectionMessage.BONJOUR:
+
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.USER_REGISTERED:
+                            UserAccepted(packet.data);
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.JOIN_ANY:
+                            Debug.Log(Marshal.ReadByte(packet.data, 1));
+                            Debug.Log(Marshal.ReadByte(packet.data, 2));
+                            Debug.Log(Marshal.ReadByte(packet.data, 3));
+                            Debug.Log(Marshal.ReadByte(packet.data, 4));
+                            Debug.Log(Marshal.ReadByte(packet.data, 5));
+
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.GET_ROOMS_LIST:
+                            /*Debug.Log(packet.length);
+                            for (int i = 0; i < (int)packet.length; i++)
+                            {
+                                Debug.Log(i + " " + Marshal.ReadByte(packet.data, i));
+
+                            }*/
+                            uint counter = (uint)IPAddress.NetworkToHostOrder(Marshal.ReadInt16(packet.data, 5));
+                            Debug.Log(counter);
+
+                            List<uint> list = new List<uint>();
+                            for (int i = 0; i < counter; i++)
+                            {
+                                list.Add((uint)IPAddress.NetworkToHostOrder(Marshal.ReadInt32(packet.data, i * 4 + 7)));
+                                //long t = Marshal.ReadInt32(packet.data, i * 4 + 7);
+                            }
+                            RoomsListReceived(list);
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.YOU_HOST:
+                            ShowPacket(packet.data, packet.length);
+                            UInt64 guid = (UInt64)(Marshal.ReadInt64(packet.data, 1));
+                            RakNetGUID natPunchGUID = new RakNetGUID();
+                            natPunchGUID.g = (guid);
+                            UInt64 guidRemote = (UInt64)(Marshal.ReadInt64(packet.data, 5));
+                            RakNetGUID remoteGUID = new RakNetGUID();
+                            remoteGUID.g = guidRemote;
+#if NETWORK_PROJECT
+                            Debug.Log(PunchNAT(rakNetInstance, natPunchGUID, "95.50.217.69:8105"));
+#endif
+                            //Debug.Log(RequestForwarding(rakNetInstance, remoteGUID, "95.50.217.69:8100"));
+                            startHost = true;
+                            break;
+                        case RakNetEnums.MasterConnectionMessage.GAME_CUSTOM_MSG:
+                            gameNetworkManager?.ParseIncommingData(packet.data);
+                            break;
+                    }
+                }
+                DealocatePacket(rakNetInstance, packet.packetRef);
+
+            }
+            yield return null;
+        }
+    }   
+
+
+    private void ShowPacket(IntPtr data, ulong size)
+    {
+        for (ulong i = 0; i < size; i++)
+        {
+            Debug.Log(Marshal.ReadByte(data, (int)i));
+        }
+        
+    }
+}
+
+

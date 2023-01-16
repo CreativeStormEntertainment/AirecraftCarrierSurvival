@@ -1,0 +1,26 @@
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.UI;
+
+namespace GambitUtils
+{
+    public static class RectTransformExtensionMethods
+    {
+        public static void ForceRebuildLayoutImmediate(this CanvasGroup canvasGroup, MonoBehaviour context, int framesCount = 1)
+        {
+            context.StartCoroutine(ForceRebuildLayoutImmediateRoutine(canvasGroup, framesCount));
+        }
+
+        private static IEnumerator ForceRebuildLayoutImmediateRoutine(this CanvasGroup canvasGroup, int framesCount = 1)
+        {
+            RectTransform rectTransform = canvasGroup.transform as RectTransform;
+            canvasGroup.alpha = 0f;
+            for (int i = 0; i < framesCount; i++)
+            {
+                yield return CoroutineUtils.WaitForEndOfFrame;
+                LayoutRebuilder.ForceRebuildLayoutImmediate(rectTransform);
+            }
+            canvasGroup.alpha = 1f;
+        }
+    }
+}

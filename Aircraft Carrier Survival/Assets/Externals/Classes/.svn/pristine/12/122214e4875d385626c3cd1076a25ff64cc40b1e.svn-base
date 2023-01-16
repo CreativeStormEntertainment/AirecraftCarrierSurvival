@@ -1,0 +1,9 @@
+﻿using System;
+
+public interface IGameNetworkManager
+{
+    void PongReceived(string adress);
+    void ConnectionIncoming(IntPtr guid);
+    void ConnectionEstablished(IntPtr guid);
+    void ParseIncommingData(IntPtr data);
+}

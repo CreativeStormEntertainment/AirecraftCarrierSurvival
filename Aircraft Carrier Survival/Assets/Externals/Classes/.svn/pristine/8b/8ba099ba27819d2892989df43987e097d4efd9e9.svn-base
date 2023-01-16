@@ -1,0 +1,60 @@
+﻿using System.Collections.Generic;
+
+namespace GambitUtils
+{
+    public class ListRandomizer<T>
+    {
+        public int Count => list.Count;
+
+        private List<T> list = new List<T>();
+        private List<T> pool = new List<T>();
+
+        private T lastPickedElement = default;
+
+        public static ListRandomizer<int> CreateIntRandomizer(int count)
+        {
+            return new ListRandomizer<int>(ListUtils.CreateIntList(0, count));
+        }
+
+        public ListRandomizer()
+        {
+        }
+
+        public ListRandomizer(List<T> list) : this()
+        {
+            SetList(list);
+        }
+
+        public void SetList(List<T> list)
+        {
+            this.list = new List<T>(list);
+            pool = new List<T>(list);
+        }
+
+        public T PickRandomElement()
+        {
+            if (list.Count == 0)
+            {
+                return default;
+            }
+            else if (list.Count == 1)
+            {
+                return list[0];
+            }
+            T pickedElement;
+            if (pool.Count == 0)
+            {
+                pool = new List<T>(list);
+                pool.Remove(lastPickedElement);
+                pickedElement = pool.PickRandomElement();
+                pool.Add(lastPickedElement);
+            }
+            else
+            {
+                pickedElement = pool.PickRandomElement();
+            }
+            lastPickedElement = pickedElement;
+            return pickedElement;
+        }
+    }
+}

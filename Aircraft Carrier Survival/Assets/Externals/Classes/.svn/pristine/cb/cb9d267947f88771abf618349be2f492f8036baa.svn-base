@@ -1,0 +1,58 @@
+﻿using System.Collections;
+using UnityEngine;
+
+namespace GambitDebug
+{
+    public class Dbg
+    {
+        public static void Log(string tag, string msg, ELoggerLevel level)
+        {
+            msg = string.Format("[{0}] {1}", tag, msg);
+            switch(level)
+            {
+                case ELoggerLevel.Critical:
+                    Debug.LogError(msg);
+                    break;
+                case ELoggerLevel.Error:
+                    Debug.LogError(msg);
+                    break;
+                case ELoggerLevel.Warning:
+                    Debug.LogWarning(msg);
+                    break;
+                case ELoggerLevel.Info:
+                    Debug.Log(msg);
+                    break;
+#if LOG_DEBUG_INFO
+                case ELoggerLevel.Debug:
+                    Debug.Log(msg);
+                    break;
+#endif
+            }
+        }
+
+        public static void D(string tag, string msg)
+        {
+            Log(tag, msg, ELoggerLevel.Debug);
+        }
+
+        public static void I(string tag, string msg)
+        {
+            Log(tag, msg, ELoggerLevel.Info);
+        }
+
+        public static void E(string tag, string msg)
+        {
+            Log(tag, msg, ELoggerLevel.Error);
+        }
+
+        public static void W(string tag, string msg)
+        {
+            Log(tag, msg, ELoggerLevel.Warning);
+        }
+
+        public static void C(string tag, string msg)
+        {
+            Log(tag, msg, ELoggerLevel.Critical);
+        }
+    }
+}

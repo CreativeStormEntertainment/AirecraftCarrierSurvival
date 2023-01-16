@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace GambitLocalization
+{
+    public class LocalizationContext
+    {
+        private Dictionary<string, string[]> localizations;
+
+        public LocalizationContext(Dictionary<string, string[]> localizations)
+        {
+            this.localizations = localizations;
+        }
+
+        public string GetText(string key)
+        {
+            if (localizations.TryGetValue(key, out string[] value))
+            {
+                return value[LocalizationManager.Instance.LanguageIndex];
+            }
+            return key;
+        }
+    }
+}

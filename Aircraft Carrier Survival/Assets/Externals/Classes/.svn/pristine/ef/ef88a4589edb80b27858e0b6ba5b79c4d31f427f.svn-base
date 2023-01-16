@@ -1,0 +1,195 @@
+﻿using GambitDebug;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
+using UnityEngine;
+
+namespace GambitLocalization
+{
+    class LocalizationManager
+    {
+        public static LocalizationManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LocalizationManager();
+                }
+                return instance;
+            }
+        }
+        private static LocalizationManager instance;
+
+        public string[] Languages { get; private set; }
+
+        private HashSet<Action<LocalizationContext>> actions = new HashSet<Action<LocalizationContext>>();
+        private Dictionary<string, string[]> localizations;
+        private Dictionary<string, Sprite[]> localizedImages;
+        private string currentLanguage;
+        private LocalizationContext context = null;
+
+        public int LanguageIndex
+        {
+            get
+            {
+                for (int i = 0; i < Languages.Length; i++)
+                {
+                    if (currentLanguage.Equals(Languages[i]))
+                    {
+                        return i;
+                    }
+                }
+                return 0;
+            }
+        }
+
+
+        private LocalizationManager()
+        {
+            localizations = new Dictionary<string, string[]>();
+            currentLanguage = "en";
+            LoadLocalizations();
+            LoadLocalizedImages();
+
+            context = new LocalizationContext(localizations, localizedImages);
+        }
+
+        private void LoadLocalizedImages()
+        {
+            return;
+            /*localizedImages = new Dictionary<string, Sprite[]>();
+            TextAsset keys = Resources.Load<TextAsset>("Localizations/LocalizedSprites/keys");
+            string[] stringSeparators = new string[] { "\r\n" };
+            string[] keysArray = keys.text.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries);
+            foreach(string key in keysArray)
+            {
+                localizedImages.Add(key, new Sprite[Languages.Length]);
+            }
+
+            int i = 0;
+            foreach(string lang in Languages)
+            {
+                Sprite[] fileEntries = Resources.LoadAll<Sprite>("Localizations/LocalizedSprites/" + lang);
+                foreach (Sprite s in fileEntries)
+                {
+                    Sprite[] sprites;
+                    if (localizedImages.TryGetValue(s.name, out sprites))
+                    {
+                        sprites[i] = s;
+                    } else
+                    {
+                        Dbg.E("SpriteLocalization", "The following key: " + s.name + " doesn't exist for lang = " + lang);
+                    }
+                }
+                foreach(string key in keysArray)
+                {
+                    if(localizedImages[key][i] == null)
+                    {
+                        Dbg.W("SpriteLocalization", "The following localized sprite: " + key + " doesn't exist for lang = " + lang);
+                    } 
+                }
+
+                i++;
+            }*/
+
+        }
+
+        private void LoadLocalizations()
+        {
+            TextAsset[] fileEntries = Resources.LoadAll<TextAsset>("Localizations/LocalizedTexts");
+            Languages = new string[fileEntries.Length - 1];
+            int i = 0;
+            foreach (UnityEngine.Object o in fileEntries)
+            {
+                string result = o.name;
+
+                if (!result.Contains("keys"))
+                {
+                    var match = Regex.Match(result, "^[a-z]*");
+                    Languages[i] = match.Groups[0].Value;
+                    i++;
+                }
+            }
+            ReadKeys();
+            ReadLanguages();
+        }
+
+        private void ReadLanguages()
+        {
+            int i = 0;
+            foreach (string value in Languages)
+            {
+                TextAsset asset = Resources.Load("Localizations/LocalizedTexts/" + value) as TextAsset;
+                if (asset != null)
+                {
+                    using (Stream s = new MemoryStream(asset.bytes))
+                    {
+                        using (BinaryReader reader = new BinaryReader(s))
+                        {
+                            foreach (KeyValuePair<string, string[]> entry in localizations)
+                            {
+                                entry.Value[i] = reader.ReadString();
+                            }
+                        }
+                    }
+                }
+                i++;
+            }
+        }
+
+        private void ReadKeys()
+        {
+            TextAsset asset = Resources.Load("Localizations/LocalizedTexts/Keys") as TextAsset;
+            if (asset != null)
+            {
+                using (Stream s = new MemoryStream(asset.bytes))
+                {
+                    using (BinaryReader reader = new BinaryReader(s))
+                    {
+                        while (reader.BaseStream.Position != reader.BaseStream.Length)
+                        {
+                            localizations.Add(reader.ReadString(), new string[Languages.Length]);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void SetLanguage(string langCode)
+        {
+            currentLanguage = langCode;
+            ExecuteAllActions();
+        }
+
+        private void ExecuteAllActions()
+        {
+            foreach (Action<LocalizationContext> a in actions)
+            {
+                a(context);
+            }
+        }
+
+
+        public void RegisterAction(Action<LocalizationContext> action)
+        {
+            action.Invoke(context);
+            if (!actions.Contains(action))
+            {
+                actions.Add(action);
+            }
+        }
+
+        public void UnregisterAction(Action<LocalizationContext> action)
+        {
+            if (!actions.Contains(action))
+            {
+                actions.Remove(action);
+            }
+        }
+
+    }
+    
+
+}

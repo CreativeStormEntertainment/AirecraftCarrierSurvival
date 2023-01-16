@@ -1,0 +1,88 @@
+﻿using UnityEngine;
+
+public class FMODStudio
+{
+    public static bool muted = false;
+
+    public static FMOD.Studio.EventInstance CreateEventInstance(string eventName, Transform transform = null)
+    {
+        FMOD.Studio.EventInstance instance = FMODUnity.RuntimeManager.CreateInstance(eventName);
+        if (transform)
+            FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, null as Rigidbody);
+        return instance;
+    }
+
+    public static FMOD.Studio.PARAMETER_ID GetParameterId(FMOD.Studio.EventInstance instance, string parameterName)
+    {
+        instance.getDescription(out FMOD.Studio.EventDescription eventDesc);
+        FMOD.RESULT result = eventDesc.getParameterDescriptionByName(parameterName, out FMOD.Studio.PARAMETER_DESCRIPTION paramDesc);
+        //Debug.Log("FMODUtils.GetFMODParameterId: " + parameterName + " " + result + " " + instance.isValid());
+        return paramDesc.id;
+    }
+
+    public static void Play(FMOD.Studio.EventInstance instance, Transform transform)
+    {
+        if (!muted && instance.isValid())
+        {
+            if (transform)
+            {
+                FMODUnity.RuntimeManager.AttachInstanceToGameObject(instance, transform, null as Rigidbody);
+            }
+            instance.start();
+        }
+    }
+
+    public static void SetPause(FMOD.Studio.EventInstance instance, bool pause)
+    {
+        if (instance.isValid() && (!muted || pause))
+        {
+            instance.setPaused(pause);
+        }
+    }
+
+    public static void Stop(FMOD.Studio.EventInstance instance, bool allowFadeout)
+    {
+        if (instance.isValid())
+        {
+            instance.stop(allowFadeout ? FMOD.Studio.STOP_MODE.ALLOWFADEOUT : FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+    }
+
+    public static void PlayOneShot(string eventName)
+    {
+        if (!muted)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(eventName);
+        }
+    }
+
+    public static void Play(FMOD.Studio.EventInstance instance, FMOD.Studio.PARAMETER_ID paramId, float paramValue, Transform transform)
+    {
+        if (SetEventParameterValue(instance, paramId, paramValue))
+        {
+            Play(instance, transform);
+        }
+    }
+
+    public static bool SetEventParameterValue(FMOD.Studio.EventInstance instance, FMOD.Studio.PARAMETER_ID paramId, float paramValue)
+    {
+        FMOD.RESULT result = instance.setParameterByID(paramId, paramValue);
+        //Debug.Log("FMODUtils.SetEventParameterValue: (" + paramId + ", " + paramValue + ") " + result);
+        return result == FMOD.RESULT.OK;
+    }
+
+    //public static void SetMusicMixerVolume(float volume)
+    //{
+    //    FMODUnity.RuntimeManager.GetVCA("vca:/ music").setVolume(GetLogNormalized(volume));
+    //}
+
+    //public static void SetSFXMixerVolume(float volume)
+    //{
+    //    FMODUnity.RuntimeManager.GetVCA("vca:/ fx").setVolume(GetLogNormalized(volume));
+    //}
+
+    public static float GetLogNormalized(float linearNormalizedValue, float scale = 1f)
+    {
+        return Mathf.Log(1f + linearNormalizedValue * scale, 1f + scale);
+    }
+}

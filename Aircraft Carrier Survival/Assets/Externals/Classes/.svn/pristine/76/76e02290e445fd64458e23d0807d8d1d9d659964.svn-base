@@ -1,0 +1,81 @@
+﻿#if EXCEL_READER
+using ExcelDataReader;
+#endif
+using GambitDebug;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+using GambitLocalization;
+
+public class ExcelToBin : Editor
+{
+#if EXCEL_READER
+    [MenuItem("Tools/Localization/Bin Localization")]
+    private static void Start()
+    {
+        string filePath = Application.dataPath + "\\Datas\\LocalizationInput\\Localization.xlsx";
+        List<LocalizationData> data = new List<LocalizationData>();
+        if (File.Exists(filePath))
+        {
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    int i;
+                    do
+                    {
+                        i = 0;
+                        while (reader.Read())
+                        {
+                            if (i == 0 && data.Count == 0)
+                            {
+                                for (int j = 0; j < reader.FieldCount; j++)
+                                {
+                                    if (j == 0)
+                                    {
+                                        data.Add(new LocalizationData("keys"));
+                                    }
+                                    else
+                                    {
+                                        data.Add(new LocalizationData(reader.GetString(j)));
+                                    }
+                                }
+                            }
+                            if (i > 0)
+                            {
+                                for (int j = 0; j < reader.FieldCount; j++)
+                                {
+                                    data[j].AddValue(reader.GetString(j));
+                                }
+                            }
+                            i++;
+                        }
+                    } while (reader.NextResult());
+                }
+            }
+
+
+            foreach (LocalizationData localizationData in data)
+            {
+                using (var stream = new FileStream(Application.dataPath + "\\Resources\\Localizations\\" + localizationData.LangCode + ".bytes", FileMode.Create))
+                {
+                    using (BinaryWriter bw = new BinaryWriter(stream))
+                    {
+                        foreach (string v in localizationData.Values)
+                        {
+                            bw.Write(v);
+                        }
+                    }
+
+                }
+            }
+        } else
+        {
+            Dbg.E("Localization", "The excel file Localization.xlsx doesn't exist. Please put the file under following path: " + Application.dataPath + @"\Datas\LocalizationInput\");
+        }
+
+    }
+#endif
+}
