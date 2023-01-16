@@ -1,0 +1,25 @@
+﻿
+public enum ESandboxEventConsequence
+{
+    None,
+    Time,
+    CrewMemberKilled,
+    CrewMemberInjured,
+    SquadronsLost,
+    SquadronsGained,
+    EscortShipDamaged,
+    EscortShipToPearlHarbour,
+    EscortShipDestroyed,
+    OfficerBlocked,
+    OrderBlock,
+    CommandPointsLost,
+    CommandPointsGained,
+    PoiSpawned,
+    EnemySpawned,
+    SpecialEscortShipUsed,
+    Wait6HAndWpawnEnemy,
+    Wait6HAndBuffAttackCards,
+    SuppliesChanged,
+    BlockTwoOfficers,
+    BlockDefensivePosition,
+}
